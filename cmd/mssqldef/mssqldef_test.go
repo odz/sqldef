@@ -16,7 +16,6 @@ import (
 	"github.com/k0kubun/sqldef/cmd/testutils"
 	"github.com/k0kubun/sqldef/database"
 	"github.com/k0kubun/sqldef/database/mssql"
-	"github.com/k0kubun/sqldef/parser"
 	"github.com/k0kubun/sqldef/schema"
 )
 
@@ -31,7 +30,7 @@ func TestApply(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	sqlParser := database.NewParser(parser.ParserModeMssql)
+	sqlParser := mssql.NewParser()
 	for name, test := range tests {
 		t.Run(name, func(t *testing.T) {
 			// Initialize the database with test.Current
